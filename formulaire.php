@@ -1,3 +1,55 @@
+<?php
+include 'class/database.php';
+include 'class/recup_form.php';
+include 'class/Inscription.php';
+include 'class/Formation.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $db = new Database();
+    $db->connect();
+
+    // Validation des données reçues
+    $errors = [];
+    $civilite = trim($_POST['civilite'] ?? '');
+    $nom = trim($_POST['nom'] ?? '');
+    $prenom = trim($_POST['prenom'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $adresse = trim($_POST['adresse'] ?? '');
+    $ville = trim($_POST['ville'] ?? '');
+    $departement = trim($_POST['departement'] ?? '');
+    $code_postal = trim($_POST['code_postal'] ?? '');
+    $telephone = trim($_POST['telephone'] ?? '');
+    $niveau = trim($_POST['niveau'] ?? '');
+    $commentaire = trim($_POST['commentaire'] ?? '');
+    $idFormation = $_POST['id_formations'] ?? null;
+
+    // Validation
+    if (empty($nom)) {
+        $errors[] = "Le nom est requis.";
+    }
+    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Une adresse email valide est requise.";
+    }
+
+    if (!empty($errors)) {
+        die(implode("<br>", $errors));
+    }
+
+    // Traitement si aucune erreur
+    $form = new RecupForm($_POST);
+    $inscription = new Inscription($db);
+
+    try {
+        $inscription->save($form, $idFormation);
+        echo "Inscription réussie !";
+    } catch (Exception $e) {
+        echo "Erreur lors de l'inscription : " . $e->getMessage();
+    }
+
+    $db->disconnect();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
