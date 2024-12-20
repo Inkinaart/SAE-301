@@ -36,7 +36,7 @@ if (isset($_GET['id'])) {
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
+<head>x²
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -49,7 +49,24 @@ if (isset($_GET['id'])) {
         <strong>Contenu:</strong>
         <p><?php echo nl2br(htmlspecialchars($article['contenu'])); ?></p>
     </div>
-    <a href="TriageNews_ajax.html">Retour à la liste des articles</a>
+
+    <section class="d-flex justify-content-center align-items-center vh-100">
+    <div class="custom-card text-center">
+        <h1 class="custom-title-card">Distribution du matériel</h1>        
+        <!-- Liste centrée -->
+        <ul class="custom-list d-inline-block text-start">
+            <li><strong>Les mardis :</strong> de 17 H 30 à 18 H 00</li>
+            <li><strong>Les dimanches :</strong> de 10 H 00 à 10 H 30</li>
+            <li>La restitution du matériel rincé aura <strong>TOUJOURS</strong> lieu les jeudis de 18 H à 18 H 30</li>
+        </ul>
+        
+        <p class="lead">Votre CACI de moins de 1 an vous sera demandé à la première plongée au lac afin d'être photographié et stocké dans nos fichiers en cas de contrôle inopiné de la gendarmerie.</p>
+        <p class="lead">Bonnes plongées à tous !</p>
+        <a href="#" class="btn btn-action">Inscrivez-vous</a>
+    </div>
+    </section>
+
+    <a href="les_news.php">Retour à la liste des articles</a>
 </body>
 
 </html>
