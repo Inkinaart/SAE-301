@@ -29,14 +29,12 @@
         </div>
     </div>
 
-
-
     <!-- Dernières news -->
     <section class="container my-5">
         <!-- Conteneur centré pour le bouton -->
         <div class="mb-4">
             <select id="mois" onchange="filterArticlesByMonth()">
-            <option value="0">-- Sélectionner un mois --</option>
+            <option value="0">tous les mois</option>
             <option value="1">Janvier</option>
             <option value="2">Février</option>
             <option value="3">Mars</option>
@@ -51,8 +49,10 @@
             <option value="12">Décembre</option>
     </select>
         </div>
+        <div class="container my-5">
             <div id="articles-list"></div>
             <script src="js/triage.js"></script>
+        </div>
     </section>
     <?php include('footer.php'); ?>
 
